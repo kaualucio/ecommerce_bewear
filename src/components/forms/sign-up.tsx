@@ -70,11 +70,14 @@ export const SignUp = () => {
         onError: ({ error }) => {
           if (error.code === "USER_ALREADY_EXISTS") {
             toast.error("Email já cadastrado");
-            form.setError("email", {
+            return form.setError("email", {
               message: "Email já cadastrado",
             });
           } else if (error.code === "INVALID_EMAIL_OR_PASSWORD") {
             toast.error("Email e/ou senha inválidos");
+            return form.setError("email", {
+              message: "Email e/ou senha inválidos",
+            });
           }
 
           toast.error(error.message);
