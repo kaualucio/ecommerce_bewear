@@ -13,7 +13,6 @@ interface ProductItemProps {
 
 export const ProductItem = ({ product }: ProductItemProps) => {
   const firstVariant = product.variants[0];
-  console.log(firstVariant.imageUrl[0]);
   return (
     <Link href="/" className="flex flex-col gap-4">
       <Image
