@@ -4,26 +4,37 @@ import React from "react";
 
 import type { productTable, productVariantTable } from "@/db/schema";
 import { formatCentsToBRL } from "@/helpers/money";
+import { cn } from "@/lib/utils";
 
 interface ProductItemProps {
   product: typeof productTable.$inferSelect & {
     variants: (typeof productVariantTable.$inferSelect)[];
   };
+  textContainerClassName?: string;
 }
 
-export const ProductItem = ({ product }: ProductItemProps) => {
+export const ProductItem = ({
+  product,
+  textContainerClassName,
+}: ProductItemProps) => {
   const firstVariant = product.variants[0];
   return (
     <Link href="/" className="flex flex-col gap-4">
       <Image
         src={firstVariant.imageUrl}
         alt={product.name}
-        width={200}
-        height={200}
-        className="rounded-[1.5rem] object-cover"
+        sizes="100vw"
+        height={0}
+        width={0}
+        className="h-auto w-auto rounded-3xl object-cover"
       />
 
-      <div className="flex max-w-[200px] flex-col gap-1">
+      <div
+        className={cn(
+          "flex max-w-[200px] flex-col gap-1",
+          textContainerClassName,
+        )}
+      >
         <p className="truncate text-sm font-medium">{product.name}</p>
         <p className="text-muted-foreground truncate text-xs">
           {product.description}

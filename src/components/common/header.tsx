@@ -22,7 +22,9 @@ export const Header = () => {
   console.log(session?.user);
   return (
     <header className="flex items-center justify-between p-5">
-      <Image src="/logo.svg" alt="BEWEAR" width={100} height={26.14} />
+      <Link href={"/"}>
+        <Image src="/logo.svg" alt="BEWEAR" width={100} height={26.14} />
+      </Link>
       <div className="flex items-center">
         <Sheet>
           <SheetTrigger asChild>
