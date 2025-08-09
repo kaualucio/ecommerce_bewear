@@ -1,6 +1,7 @@
 import { desc } from "drizzle-orm";
 import Image from "next/image";
 
+import { BrandList } from "@/components/common/brand-list";
 import { CategorySelector } from "@/components/common/category-selector";
 import Footer from "@/components/common/footer";
 import { Header } from "@/components/common/header";
@@ -36,6 +37,7 @@ export default async function Home() {
             className="h-auto w-auto"
           />
         </div>
+        <BrandList />
         <ProductList title="Mais vendidos" products={products} />
         <div className="px-5">
           <CategorySelector categories={categories} />
