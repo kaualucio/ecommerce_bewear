@@ -5,6 +5,7 @@ import { notFound } from "next/navigation";
 import Footer from "@/components/common/footer";
 import { Header } from "@/components/common/header";
 import { ProductList } from "@/components/common/product-list";
+import QuantitySelector from "@/components/common/quantity-selector";
 import VariantSelector from "@/components/common/variant-selector";
 import { Button } from "@/components/ui/button";
 import { db } from "@/db";
@@ -51,7 +52,12 @@ const ProductVariantPage = async ({ params }: ProductVariantPageProps) => {
           width={0}
           className="h-auto w-auto rounded-3xl"
         />
-        <div className="px-5"></div>
+        <div className="px-5">
+          <VariantSelector
+            selectedVariant={productVariant.slug}
+            variants={productVariant.product.variants}
+          />
+        </div>
         <div className="px-5">
           <h2 className="text-l font-semibold">
             {productVariant.product.name}
@@ -64,10 +70,7 @@ const ProductVariantPage = async ({ params }: ProductVariantPageProps) => {
           </h3>
         </div>
         <div className="px-5">
-          <VariantSelector
-            selectedVariant={productVariant.slug}
-            variants={productVariant.product.variants}
-          />
+          <QuantitySelector />
         </div>
 
         <div className="flex flex-col space-y-4 px-5">
