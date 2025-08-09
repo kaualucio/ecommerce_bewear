@@ -12,9 +12,10 @@ import {
   SheetTitle,
   SheetTrigger,
 } from "../ui/sheet";
+import { CartItem } from "./cart-item";
 
 export const Cart = () => {
-  const { data: cart, isPending: cartIsLoading } = useQuery({
+  const { data: cart } = useQuery({
     queryKey: ["cart"],
     queryFn: () => getCart(),
   });
@@ -29,9 +30,17 @@ export const Cart = () => {
         <SheetHeader>
           <SheetTitle>Carrinho</SheetTitle>
         </SheetHeader>
-        <div>
+        <div className="space-y-4 px-5">
           {cart?.items.map((item) => (
-            <p key={item.id}>{item.id}</p>
+            <CartItem
+              key={item.id}
+              id={item.id}
+              productName={item.productVariant.product.name}
+              productVariantImageUrl={item.productVariant.imageUrl}
+              productVariantName={item.productVariant.name}
+              productVariantPriceInCents={item.productVariant.priceInCents}
+              quantity={item.quantity}
+            />
           ))}
         </div>
       </SheetContent>
