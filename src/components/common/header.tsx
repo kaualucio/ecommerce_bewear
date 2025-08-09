@@ -20,13 +20,12 @@ import { Cart } from "./cart";
 
 export const Header = () => {
   const { data: session } = authClient.useSession();
-  console.log(session?.user);
   return (
     <header className="flex items-center justify-between p-5">
       <Link href={"/"}>
         <Image src="/logo.svg" alt="BEWEAR" width={100} height={26.14} />
       </Link>
-      <div className="flex items-center">
+      <div className="flex items-center gap-3">
         <Sheet>
           <SheetTrigger asChild>
             <Button variant="outline" size="icon" className="cursor-pointer">
